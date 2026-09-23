@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The CAD Benchmark</title>
+<meta name="description" content="a reference benchmark for whether an ai model actually reasons about mechanical design, or pattern-matches on shape. results publish november 2026.">
+<link rel="canonical" href="https://divyanshchauhan.com/benchmark">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://divyanshchauhan.com/benchmark">
+<meta property="og:title" content="The CAD Benchmark">
+<meta property="og:description" content="a reference benchmark for whether an ai model actually reasons about mechanical design, or pattern-matches on shape. results publish november 2026.">
+<meta property="og:image" content="https://divyanshchauhan.com/img/ef-neon.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=EB+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Silkscreen&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bar"><div class="in">
+  <a class="who" href="index.html">Divyansh Chauhan</a>
+  <nav>
+    <a href="benchmark.html" aria-current="page">Benchmark</a>
+    <a href="blip.html">Blip</a>
+    <a href="early.html">Early life</a>
+    <a href="slush.html">Slush</a>
+  </nav>
+</div></div>
+
+<main>
+
+<p class="backlink">← <a href="index.html">index</a></p>
+
+<h1 class="big">The CAD Benchmark</h1>
+
+<p class="standfirst">a reference benchmark for whether a model actually reasons about a mechanical part — or is pattern-matching on its shape. built from a dataset i'm making myself. results publish november 2026.</p>
+
+<p class="dropcap">every lab training on mechanical design evaluates against whatever data it happens to hold. one team scores on its own scraped step files, another on a supplier's parts library, a third on synthetic geometry it generated last quarter. all three publish a number. none of the three numbers can be compared with either of the others, and nobody can say which model is better at the thing they all claim to do.</p>
+
+<p>that's the gap. not more data — <em>shared</em> data, held out, with a scoring method that everyone can run and nobody controls. that's what i'm building at <strong>datak</strong>, on top of the cad and simulation datasets i already sell.</p>
+
+<div class="panel">
+  <div class="phead"><span>The board — live</span><span>↓ highest first</span></div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th class="rank">#</th><th>Model</th><th>Geometry</th><th>Edit</th><th>Mfg</th><th>Sim</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td class="rank">01</td><td class="pending">not yet published</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td class="rank">02</td><td class="pending">not yet published</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td class="rank">03</td><td class="pending">not yet published</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note" style="margin-bottom:0">no scores here yet, and i'm not going to put placeholder numbers on a page that looks like a leaderboard. the board fills when the first run completes — targeting <strong>before november 2026</strong>.</p>
+</div>
+
+<hr class="dots">
+
+<h2>What it measures</h2>
+
+<p>a model can describe a bracket convincingly and still have no idea what happens when you load it. the benchmark separates the two by asking questions that a wrong answer fails <em>visibly</em> — where there is a known-correct result from the underlying geometry or a solver run, not a human opinion.</p>
+
+<ul>
+  <li><strong>geometry comprehension.</strong> given a part, identify its features — holes, fillets, ribs, draft, wall thickness, tolerances. answers check against the feature tree in the native file, so there's no grading by vibes.</li>
+  <li><strong>parametric edit.</strong> change a dimension and keep the constraints valid. this is where shape-matching falls over: a model that has only seen pictures of brackets cannot tell you what else moves when this hole shifts 4 mm.</li>
+  <li><strong>manufacturability.</strong> can this be machined, cast or moulded as drawn — and if not, which feature is the reason. a real answer names the feature.</li>
+  <li><strong>simulation outcome.</strong> given a load case, predict where it fails and roughly how much it deflects. scored against the actual solver run — ansys, abaqus or openfoam — that shipped with the part.</li>
+</ul>
+
+<figure>
+  <svg viewBox="0 0 800 300" width="800" height="300" role="img"
+       aria-label="Diagram of a rectangular mechanical plate with two holes and a fillet, annotated with dimension lines and callouts for the four benchmark axes.">
+    <rect x="0" y="0" width="800" height="300" fill="#FBFBFB"/>
+    <!-- part outline -->
+    <path d="M150 90 L560 90 L560 175 Q560 205 530 205 L150 205 Z" fill="#fff" stroke="#0A35F0" stroke-width="2"/>
+    <!-- holes -->
+    <circle cx="215" cy="147" r="26" fill="#FBFBFB" stroke="#0A35F0" stroke-width="2"/>
+    <circle cx="215" cy="147" r="2.5" fill="#0A35F0"/>
+    <circle cx="470" cy="147" r="26" fill="#FBFBFB" stroke="#0A35F0" stroke-width="2"/>
+    <circle cx="470" cy="147" r="2.5" fill="#0A35F0"/>
+    <!-- centre lines -->
+    <line x1="215" y1="115" x2="215" y2="179" stroke="#0A35F0" stroke-width=".8" stroke-dasharray="7 4"/>
+    <line x1="183" y1="147" x2="247" y2="147" stroke="#0A35F0" stroke-width=".8" stroke-dasharray="7 4"/>
+    <line x1="470" y1="115" x2="470" y2="179" stroke="#0A35F0" stroke-width=".8" stroke-dasharray="7 4"/>
+    <line x1="438" y1="147" x2="502" y2="147" stroke="#0A35F0" stroke-width=".8" stroke-dasharray="7 4"/>
+    <!-- horizontal dimension -->
+    <line x1="150" y1="248" x2="560" y2="248" stroke="rgba(0,0,0,.45)" stroke-width="1"/>
+    <path d="M150 248 l9 -4 v8 z M560 248 l-9 -4 v8 z" fill="rgba(0,0,0,.45)"/>
+    <line x1="150" y1="212" x2="150" y2="254" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+    <line x1="560" y1="212" x2="560" y2="254" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+    <text x="355" y="240" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="rgba(0,0,0,.6)">410.0</text>
+    <!-- vertical dimension -->
+    <line x1="112" y1="90" x2="112" y2="205" stroke="rgba(0,0,0,.45)" stroke-width="1"/>
+    <path d="M112 90 l-4 9 h8 z M112 205 l-4 -9 h8 z" fill="rgba(0,0,0,.45)"/>
+    <text x="104" y="152" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="13" fill="rgba(0,0,0,.6)">115.0</text>
+    <!-- callouts -->
+    <line x1="215" y1="121" x2="258" y2="56" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+    <text x="262" y="52" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">GEOMETRY — name the feature</text>
+    <line x1="470" y1="121" x2="512" y2="76" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+    <text x="516" y="72" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">EDIT — move it, keep constraints</text>
+    <line x1="548" y1="196" x2="600" y2="236" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+    <text x="604" y="240" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">MFG — is the fillet moulda­ble</text>
+    <line x1="300" y1="205" x2="300" y2="276" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+    <text x="306" y="280" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">SIM — where does it yield</text>
+    <text x="150" y="76" font-family="IBM Plex Mono, monospace" font-size="11" fill="rgba(0,0,0,.45)">PART 0001 · STEP AP242</text>
+  </svg>
+  <figcaption><b>Fig. 01</b> — one part, four questions. a model can pass the first and fail the other three, which is precisely the thing no current evaluation separates. <span style="color:rgba(0,0,0,.45)">diagram, not a dataset sample.</span></figcaption>
+</figure>
+
+<h2>Where the data comes from</h2>
+
+<p>this is the part that's hard to fake and the reason i think i can build it. datak already sources original cad and simulation data through an exclusive network of design partners — parts authored for us, not scraped, with the manifests and provenance that let a buyer trust geometry they can't eyeball. the benchmark's held-out set is drawn from the same pipeline, which means:</p>
+
+<ul>
+  <li>it's <strong>not in anyone's training data</strong>, because it was made for this and never published.</li>
+  <li>every task has a <strong>known-correct answer</strong> from the native file or the solver run, not a human rater's judgement.</li>
+  <li>i can keep making more of it, so a contaminated set can be retired rather than defended.</li>
+</ul>
+
+<div class="note">
+  status — dataset in construction, scoring harness in progress, no results yet. targeting a first public run <strong>before november 2026</strong>. if you're training on mechanical design data and want to be on the first board, <a href="mailto:divshiv87@gmail.com">email me</a>.
+</div>
+
+<h2>Why i'm building it</h2>
+
+<p>partly because the category needs it. mostly because of where it sits: sell the data, own the benchmark, then train the model. whoever defines how these systems get measured is best placed to build the one that wins — and the measuring is the cheapest of the three to do first.</p>
+
+<p>the model doesn't exist yet. i'd rather say that plainly here than imply otherwise.</p>
+
+<hr class="dots">
+
+<p>
+  <a class="brk" href="index.html">back to index</a>
+  <a class="brk" href="blip.html">what happened at blip</a>
+</p>
+
+<footer>
+  <a href="index.html">index</a> ·
+  <a href="blip.html">blip</a> ·
+  <a href="early.html">early life</a> ·
+  <a href="slush.html">slush</a> ·
+  <a href="mailto:divshiv87@gmail.com">divshiv87@gmail.com</a>
+</footer>
+
+</main>
+</body>
+</html>
