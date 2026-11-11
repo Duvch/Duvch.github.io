@@ -46,15 +46,25 @@
 
 <h2>Right now i'm</h2>
 <ul>
-  <li>building <strong>datak</strong>. i source and sell <strong>cad and engineering simulation datasets</strong> to labs training ai on mechanical design: step, iges, parasolid, stl, solidworks, catia and creo geometry, plus ansys, abaqus and openfoam runs with their solver settings and result fields. i run it end to end: design briefs and data specs, a network of cad design partners, qa on geometry, labels and originality, and the manifests and secure delivery a buyer needs before paying for data they can't check by eye.</li>
+  <li>building <a href="https://datak.si" target="_blank" rel="noopener noreferrer"><strong>datak</strong></a> (datak.si). i source and sell <strong>cad and engineering simulation datasets</strong> to labs training ai on mechanical design: step, iges, parasolid, stl, solidworks, catia and creo geometry, plus ansys, abaqus and openfoam runs with their solver settings and result fields. i run it end to end: design briefs and data specs, a network of cad design partners, qa on geometry, labels and originality, and the manifests and secure delivery a buyer needs before paying for data they can't check by eye.</li>
 
   <li>building a <strong>benchmark for cad data</strong> on top of it, using a dataset i'm making myself. right now each lab tests its mechanical-design models on whatever data it has, so results can't be compared. the benchmark asks every model the same question: does it reason about the part, or match on its shape? targeting launch <strong>before next year</strong>. <a href="benchmark.html">how it's measured →</a></li>
 
-  <li>next, <strong>training my own model</strong> on that data and raising money on the result. if i sell the data and run the benchmark, i'm in a good position to train a model that does well on it. none of this part is built yet.</li>
+  <li>next, <strong>training my own model</strong> on that data and raising money on the result. if i sell the data and run the benchmark, i'm in a good position to train a model that does well on it. none of this part is built yet. <a href="#where">where it's going →</a></li>
 
   <li>founder's office @ <strong>slashy</strong> (yc s25). first hire, joined at 18, work directly with the founder. built reporting dashboards on live product and campaign data (<strong>~50% faster</strong> turnaround), and an in-house lead sourcing and enrichment pipeline in python and c++ across several rest apis, which replaced clay and apollo and cut cac. most of the work was handling rate limits, partial matches, duplicates and apis that return 200 when they fail, so i added retry and dedupe logic before the team relied on it. i also own release quality: <strong>100+ issues</strong> triaged and closed with engineering.</li>
 
 </ul>
+
+<h2 id="where">Where this is going</h2>
+
+<p>the long-term goal is an agent that works like a mechanical engineer. you describe the part you need and the loads it has to carry. the agent designs it in cad, runs the simulations an engineer would run (stress, deflection, heat, fatigue), changes the design when it fails, and only hands it over once the numbers pass. what you get is a file you can manufacture, plus the test results that show it works.</p>
+
+<p>robots are the first obvious user. a robot that needs a new bracket, gripper finger or mount could get one designed and checked without waiting for an engineer. that's a step towards robots designing and building parts for other robots.</p>
+
+<p>the use case i think about most is space. on a space station, or later on the moon or mars, a crew can't wait months for a replacement part from earth. with a 3d printer or machine on board and an agent like this, they could describe the broken part, get a design already simulated against the loads it will face, and make it on the spot.</p>
+
+<p>none of this exists yet. datak's data and the benchmark are the first two steps, because you can't train a model like this, or trust it, without good data and a fair way to test it.</p>
 
 <h2>Previously i</h2>
 <ul>
@@ -142,6 +152,7 @@
   <a href="mailto:divshiv87@gmail.com">divshiv87@gmail.com</a> ·
   <a href="https://github.com/Duvch" target="_blank" rel="noopener noreferrer">github</a> ·
   <a href="https://www.linkedin.com/in/divyansh-chauhan-733387225/" target="_blank" rel="noopener noreferrer">linkedin</a> ·
+  <a href="https://datak.si" target="_blank" rel="noopener noreferrer">datak</a> ·
   <a href="https://www.blipai.app/" target="_blank" rel="noopener noreferrer">blip ai</a> ·
   <a href="https://www.aishield.software/" target="_blank" rel="noopener noreferrer">aishield</a>
 </footer>
