@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What happened at Blip</title>
-<meta name="description" content="blip ai crossed $206,947 in gross sales. then we were attacked for three days, our groq account was banned, and 307 refunds took it to ~$128k net.">
+<meta name="description" content="blip ai reached $206,947 in gross sales. then an attack took it down for three days, our groq account was banned, and 307 refunds brought it to ~$128k net.">
 <link rel="canonical" href="https://divyanshchauhan.com/blip">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://divyanshchauhan.com/blip">
 <meta property="og:title" content="What happened at Blip">
-<meta property="og:description" content="blip ai crossed $206,947 in gross sales. then we were attacked for three days, our groq account was banned, and 307 refunds took it to ~$128k net.">
+<meta property="og:description" content="blip ai reached $206,947 in gross sales. then an attack took it down for three days, our groq account was banned, and 307 refunds brought it to ~$128k net.">
 <meta property="og:image" content="https://divyanshchauhan.com/img/blip-revenue.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,9 +32,9 @@
 
 <p class="backlink">← <a href="index.html">index</a></p>
 
-<h1 class="big">We nearly touched $207k</h1>
+<h1 class="big">Blip reached $207k, then got attacked</h1>
 
-<p class="standfirst">then blip was attacked for three days, our groq account was banned, and the refunds took a third of the revenue with them. this is the part i'd rather not put on a portfolio, which is exactly why it's here.</p>
+<p class="standfirst">blip reached $206,947 in gross sales. then it was attacked for three days, our groq account was banned, and refunds took about a third of the revenue. it's the most useful thing that happened to me, so it's here.</p>
 
 <div class="stat">
   <div><b>$206,947</b><span>gross sales</span></div>
@@ -47,52 +47,52 @@
 
 <h2>What blip was</h2>
 
-<p>a voice-to-text tool — a cheaper alternative to wispr flow. i founded it and ran it on my own: product, pricing, onboarding, funnel instrumentation, and all of the distribution. it sold through a lifetime-deal campaign, which is why the dashboard below counts <em>codes</em> rather than subscriptions. <strong>10,000+ users</strong>, and around <strong>2m organic views</strong> across reddit, x and instagram got them there. no ad budget, no audience when i started.</p>
+<p>a voice-to-text tool and a cheaper alternative to wispr flow. i founded it and ran it alone: product, pricing, onboarding, funnel tracking and all distribution. it sold through a lifetime-deal campaign, which is why the dashboard counts <em>codes</em> instead of subscriptions. we got to <strong>10,000+ users</strong> from about <strong>2m organic views</strong> on reddit, x and instagram, with no ad spend and no existing audience.</p>
 
 <figure>
   <img src="img/blip-revenue.jpg" width="1400" height="716"
        alt="Blip AI sales dashboard showing $206,947.33 total payout, 2,034 total payable codes, 307 total refunded codes, and a May 2026 monthly net of $101,836.01.">
-  <figcaption><b>Fig. 01</b> — the campaign dashboard. $206,947.33 total payout, 2,034 payable codes, and the number this page is about: <strong>307 refunded</strong>.</figcaption>
+  <figcaption><b>Fig. 01</b> the campaign dashboard: $206,947.33 total payout, 2,034 payable codes and <strong>307 refunded</strong>.</figcaption>
 </figure>
 
 <h2>What happened</h2>
 
-<p>somebody started hammering the product with requests. not a clever exploit — volume. every one of those requests hit our inference provider on our key, and the bill and the rate profile went somewhere neither i nor the provider had any reason to expect.</p>
+<p>someone started sending the product huge numbers of requests. it wasn't a clever exploit, just volume. every request went to our inference provider on our api key, so our usage and bill jumped far past normal.</p>
 
-<p>two things broke at once, and the second is the one that actually hurt:</p>
+<p>two things went wrong:</p>
 
 <ul>
-  <li><strong>our groq account was banned.</strong> the traffic pattern looked like abuse because it <em>was</em> abuse, just not ours, and the ban landed on us rather than on whoever sent it. without inference, blip does nothing at all. it's a dictation app with no transcription.</li>
-  <li><strong>the product stayed down for three days.</strong> and a lifetime-deal customer who bought last week and finds a dead app this week does not wait politely. they refund. <strong>307 of them did.</strong></li>
+  <li><strong>our groq account was banned.</strong> the traffic looked like abuse because it was abuse, and the ban fell on our account, not on whoever sent it. without inference blip can't transcribe anything, so the app stopped working.</li>
+  <li><strong>the product was down for three days.</strong> customers who had just bought a lifetime deal found a broken app and asked for refunds. <strong>307 of them did.</strong></li>
 </ul>
 
-<p>that's the whole mechanism. an attacker spent nothing, i lost roughly a third of the revenue, and the refunds are permanent in a way the outage wasn't.</p>
+<p>the attack cost the attacker nothing and cost us about a third of the revenue. the outage ended, but the refunds didn't come back.</p>
 
 <h2>What i did about it</h2>
 
-<p>badly, at first. i spent about a day trying to solve it alone — reading docs, filing support tickets into a queue, refreshing a dashboard. what i should have done on hour one is what i eventually did on day two: say out loud, in public, that i was stuck and needed a specific thing.</p>
+<p>i handled it badly at first. i spent about a day trying to fix it alone: reading docs, filing support tickets and checking the dashboard. on day two i did what i should have done in the first hour and posted publicly that i was stuck and what i needed.</p>
 
 <figure>
   <img src="img/blip-linkedin.jpg" width="1200" height="1166"
        alt="A LinkedIn post by Divyansh Chauhan reading 'Can anybody intro us to Groq Need Help urgently', with the Groq logo, showing 3,372 impressions.">
-  <figcaption><b>Fig. 02</b> — the actual post. no framing, no story, no lesson attached. just the ask. it reached <strong>3,372 people</strong> — and the answer came from a colleague, not from any of them.</figcaption>
+  <figcaption><b>Fig. 02</b> the post. it reached <strong>3,372 people</strong>, but the help came from a colleague.</figcaption>
 </figure>
 
-<p>it worked, but not the way i'd asked. nobody introduced me to groq, and the ban was never lifted. what actually happened is that <strong>harsh, slashy's co-founder</strong>, saw the post and handed me <strong>his own groq account</strong> — so blip had inference again, and the product came back up on somebody else's key.</p>
+<p>nobody introduced me to groq and the ban was never lifted. instead <strong>harsh, slashy's co-founder</strong>, saw the post and gave me access to <strong>his own groq account</strong>, and blip came back up on his key.</p>
 
-<p>the useful detail there isn't "networking works." it's that the thing which saved it wasn't the intro i'd asked 3,372 strangers for. it was the co-founder of the company where i'm the first hire — someone i already worked with every day — who read a post i almost didn't publish because it was embarrassing, and gave me something of his own. i had been optimising for reach. the fix came from a relationship.</p>
+<p>the help didn't come from the 3,372 people who saw the post. it came from the co-founder of the company where i'm the first hire, someone i already worked with every day, and he only saw it because i posted it. i'd been thinking about reach, and what mattered was a relationship i already had.</p>
 
-<h2>What i actually learned</h2>
+<h2>What i learned</h2>
 <ul>
-  <li><strong>an api key is a single point of failure and i treated it like a config value.</strong> no rate limiting of my own, no per-user quota, no spend alarm, no fallback provider. every one of those is a few hours of work i hadn't done, and any one of them would have turned this from an outage into an inconvenience.</li>
-  <li><strong>your provider's abuse detection cannot tell your traffic from an attacker's.</strong> it protects them, not you, it acts without asking, and it bans the account it can see — which is yours. if you're a single-provider product, you are one anomalous day from being switched off with no appeal that runs faster than your refund window.</li>
-  <li><strong>lifetime deals convert downtime into permanent losses.</strong> a subscriber who has a bad week churns next month and might come back. an ltd buyer inside a refund window just leaves, and takes the revenue with them. i priced for cash up front without pricing in the fragility that comes with it.</li>
-  <li><strong>the day i waited was more expensive than the help was hard to ask for.</strong> that's the one i think about most. i had the reach to fix it on day one and didn't use it, because posting "i need help" felt worse than losing money. it wasn't.</li>
+  <li><strong>i treated an api key like a config value when it was a single point of failure.</strong> i had no rate limiting, per-user quotas, spend alerts or backup provider. each takes a few hours to set up, and any one of them would have made this a minor problem instead of an outage.</li>
+  <li><strong>a provider's abuse detection can't tell your traffic from an attacker's.</strong> it protects the provider, acts without asking, and bans the account it can see, which is yours. if you rely on one provider, one bad day can shut you down faster than any appeal or refund window.</li>
+  <li><strong>lifetime deals turn downtime into permanent losses.</strong> a subscriber who has a bad week might cancel next month and come back later. a lifetime-deal buyer inside the refund window just refunds. i priced for cash up front without accounting for that risk.</li>
+  <li><strong>waiting a day cost more than asking for help would have.</strong> i could have posted on day one and didn't, because asking for help felt worse than losing money. it wasn't.</li>
 </ul>
 
-<p>i still think blip was a good product. it made real money from people who had never heard of me, in a category with a well-funded incumbent. but i'd built it as though nothing adversarial would ever point at it, and the first thing that did took a third of the revenue in seventy-two hours.</p>
+<p>i still think blip was a good product. it made real money from people who had never heard of me, competing with a well-funded incumbent. but i built it as if nobody would ever attack it, and the first attack took a third of the revenue in seventy-two hours.</p>
 
-<p>the reason this page exists: the numbers on the front of a portfolio are usually the ones that survived. this is the one that didn't, and it taught me more than the rest of it.</p>
+<p>portfolios usually show only the numbers that went well. this one didn't, and i learned more from it than from anything else.</p>
 
 <hr class="dots">
 

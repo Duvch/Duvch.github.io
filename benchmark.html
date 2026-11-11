@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The CAD Benchmark</title>
-<meta name="description" content="a reference benchmark for whether an ai model actually reasons about mechanical design, or pattern-matches on shape. results publish before next year.">
+<meta name="description" content="a benchmark that tests whether an ai model reasons about mechanical design or only matches on shape. first results before next year.">
 <link rel="canonical" href="https://divyanshchauhan.com/benchmark">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://divyanshchauhan.com/benchmark">
 <meta property="og:title" content="The CAD Benchmark">
-<meta property="og:description" content="a reference benchmark for whether an ai model actually reasons about mechanical design, or pattern-matches on shape. results publish before next year.">
+<meta property="og:description" content="a benchmark that tests whether an ai model reasons about mechanical design or only matches on shape. first results before next year.">
 <meta property="og:image" content="https://divyanshchauhan.com/img/ef-neon.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,14 +34,14 @@
 
 <h1 class="big">The CAD Benchmark</h1>
 
-<p class="standfirst">a reference benchmark for whether a model actually reasons about a mechanical part — or is pattern-matching on its shape. built from a dataset i'm making myself. results publish before next year.</p>
+<p class="standfirst">a benchmark that tests whether a model can reason about a mechanical part or is only matching on its shape. built on a dataset i'm making myself. first results before next year.</p>
 
-<p class="dropcap">every lab training on mechanical design evaluates against whatever data it happens to hold. one team scores on its own scraped step files, another on a supplier's parts library, a third on synthetic geometry it generated last quarter. all three publish a number. none of the three numbers can be compared with either of the others, and nobody can say which model is better at the thing they all claim to do.</p>
+<p class="dropcap">labs training models on mechanical design each test them on their own data. one uses scraped step files, another a supplier's parts library, another synthetic geometry it generated itself. each publishes a score, but the scores can't be compared, so nobody can say which model is better.</p>
 
-<p>that's the gap. not more data — <em>shared</em> data, held out, with a scoring method that everyone can run and nobody controls. that's what i'm building at <strong>datak</strong>, on top of the cad and simulation datasets i already sell.</p>
+<p>what's missing is a shared, held-out dataset with a scoring method anyone can run. that's what i'm building at <strong>datak</strong>, using the cad and simulation data i already sell.</p>
 
 <div class="panel">
-  <div class="phead"><span>The board — live</span><span>↓ highest first</span></div>
+  <div class="phead"><span>The board</span><span>↓ highest first</span></div>
   <div class="tablewrap">
   <table>
     <thead><tr><th class="rank">#</th><th>Model</th><th>Geometry</th><th>Edit</th><th>Mfg</th><th>Sim</th><th>Score</th></tr></thead>
@@ -52,20 +52,20 @@
     </tbody>
   </table>
   </div>
-  <p class="note" style="margin-bottom:0">no scores here yet, and i'm not going to put placeholder numbers on a page that looks like a leaderboard. the board fills when the first run completes — targeting <strong>before next year</strong>.</p>
+  <p class="note" style="margin-bottom:0">there are no scores yet, and i won't put placeholder numbers in a table that looks like a leaderboard. it fills in after the first run, targeted for <strong>before next year</strong>.</p>
 </div>
 
 <hr class="dots">
 
 <h2>What it measures</h2>
 
-<p>a model can describe a bracket convincingly and still have no idea what happens when you load it. the benchmark separates the two by asking questions that a wrong answer fails <em>visibly</em> — where there is a known-correct result from the underlying geometry or a solver run, not a human opinion.</p>
+<p>a model can describe a bracket well and still not know what happens when it's loaded. the benchmark only asks questions with a known correct answer, taken from the geometry or a solver run, so a wrong answer is clearly wrong.</p>
 
 <ul>
-  <li><strong>geometry comprehension.</strong> given a part, identify its features — holes, fillets, ribs, draft, wall thickness, tolerances. answers check against the feature tree in the native file, so there's no grading by vibes.</li>
-  <li><strong>parametric edit.</strong> change a dimension and keep the constraints valid. this is where shape-matching falls over: a model that has only seen pictures of brackets cannot tell you what else moves when this hole shifts 4 mm.</li>
-  <li><strong>manufacturability.</strong> can this be machined, cast or moulded as drawn — and if not, which feature is the reason. a real answer names the feature.</li>
-  <li><strong>simulation outcome.</strong> given a load case, predict where it fails and roughly how much it deflects. scored against the actual solver run — ansys, abaqus or openfoam — that shipped with the part.</li>
+  <li><strong>geometry comprehension.</strong> identify a part's features: holes, fillets, ribs, draft, wall thickness, tolerances. answers are checked against the feature tree in the native file.</li>
+  <li><strong>parametric edit.</strong> change a dimension and keep the constraints valid. models that have only seen images of parts tend to fail here, because they can't tell what else moves when a hole shifts 4 mm.</li>
+  <li><strong>manufacturability.</strong> say whether the part can be machined, cast or moulded as drawn, and if not, which feature is the problem.</li>
+  <li><strong>simulation outcome.</strong> for a given load case, predict where the part fails and roughly how much it deflects. scored against the ansys, abaqus or openfoam run that came with the part.</li>
 </ul>
 
 <figure>
@@ -96,37 +96,37 @@
     <text x="104" y="152" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="13" fill="rgba(0,0,0,.6)">115.0</text>
     <!-- callouts -->
     <line x1="215" y1="121" x2="258" y2="56" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
-    <text x="262" y="52" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">GEOMETRY — name the feature</text>
+    <text x="262" y="52" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">GEOMETRY: name the feature</text>
     <line x1="470" y1="121" x2="512" y2="76" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
-    <text x="516" y="72" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">EDIT — move it, keep constraints</text>
+    <text x="516" y="72" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">EDIT: move it, keep constraints</text>
     <line x1="548" y1="196" x2="600" y2="236" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
-    <text x="604" y="240" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">MFG — is the fillet moulda­ble</text>
+    <text x="604" y="240" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">MFG: is the fillet moulda­ble</text>
     <line x1="300" y1="205" x2="300" y2="276" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
-    <text x="306" y="280" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">SIM — where does it yield</text>
+    <text x="306" y="280" font-family="IBM Plex Mono, monospace" font-size="12" fill="#0A35F0">SIM: where does it yield</text>
     <text x="150" y="76" font-family="IBM Plex Mono, monospace" font-size="11" fill="rgba(0,0,0,.45)">PART 0001 · STEP AP242</text>
   </svg>
-  <figcaption><b>Fig. 01</b> — one part, four questions. a model can pass the first and fail the other three, which is precisely the thing no current evaluation separates. <span style="color:rgba(0,0,0,.45)">diagram, not a dataset sample.</span></figcaption>
+  <figcaption><b>Fig. 01</b> one part, four questions. a model can pass the first and fail the other three, and current evaluations don't separate these. <span style="color:rgba(0,0,0,.45)">diagram, not a dataset sample.</span></figcaption>
 </figure>
 
 <h2>Where the data comes from</h2>
 
-<p>this is the part that's hard to fake and the reason i think i can build it. datak already sources original cad and simulation data through an exclusive network of design partners — parts authored for us, not scraped, with the manifests and provenance that let a buyer trust geometry they can't eyeball. the benchmark's held-out set is drawn from the same pipeline, which means:</p>
+<p>datak already sources original cad and simulation data from a network of design partners. the parts are made for us, not scraped, and come with manifests and provenance records. the benchmark's held-out set comes from the same pipeline, so:</p>
 
 <ul>
   <li>it's <strong>not in anyone's training data</strong>, because it was made for this and never published.</li>
-  <li>every task has a <strong>known-correct answer</strong> from the native file or the solver run, not a human rater's judgement.</li>
-  <li>i can keep making more of it, so a contaminated set can be retired rather than defended.</li>
+  <li>every task has a <strong>known correct answer</strong> from the native file or the solver run, not a human rater.</li>
+  <li>i can keep producing new data, so if a set leaks it can be replaced.</li>
 </ul>
 
 <div class="note">
-  status — dataset in construction, scoring harness in progress, no results yet. targeting a first public run <strong>before next year</strong>. if you're training on mechanical design data and want to be on the first board, <a href="mailto:divshiv87@gmail.com">email me</a>.
+  status: dataset in progress, scoring harness in progress, no results yet. first public run targeted <strong>before next year</strong>. if you're training on mechanical design data and want to be on the first board, <a href="mailto:divshiv87@gmail.com">email me</a>.
 </div>
 
 <h2>Why i'm building it</h2>
 
-<p>partly because the category needs it. mostly because of where it sits: sell the data, own the benchmark, then train the model. whoever defines how these systems get measured is best placed to build the one that wins — and the measuring is the cheapest of the three to do first.</p>
+<p>the plan is to sell the data, run the benchmark, then train a model. the benchmark is the cheapest of the three to start with, and it shows what a good model has to do.</p>
 
-<p>the model doesn't exist yet. i'd rather say that plainly here than imply otherwise.</p>
+<p>the model doesn't exist yet.</p>
 
 <hr class="dots">
 
